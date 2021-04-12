@@ -4,13 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#00F2FF00"
     tools:context=".RegisterActivity">
-
-    <include
-        android:id="@+id/toolbar"
-        layout="@layout/bar_layout">
-
-    </include>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -20,46 +15,65 @@
         android:orientation="vertical"
         android:padding="16dp">
 
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/tel" />
+
+
         <TextView
             android:id="@+id/textView"
             android:layout_width="wrap_content"
+            android:layout_height="44dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginRight="30dp"
+            android:fontFamily="casual"
+            android:text="Registration"
+            android:textAlignment="center"
+            android:textColor="#020202"
+            android:textSize="30sp" />
+
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/username"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Create a new account"
-            android:textSize="20sp"
-            android:textStyle="bold" />
+            android:layout_marginTop="10dp"
+            android:hint="UserName"
+            app:met_floatingLabel="normal" />
 
-
-       <com.rengwuxian.materialedittext.MaterialEditText
-           android:id="@+id/username"
-           android:layout_width="match_parent"
-           android:layout_height="wrap_content"
-           android:layout_marginTop="10dp"
-           android:hint="UserName"
-           app:met_floatingLabel="normal"/>
         <com.rengwuxian.materialedittext.MaterialEditText
             android:id="@+id/email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:hint="Email"
-            app:met_floatingLabel="normal"
-            android:inputType="textEmailAddress"/>
+            android:inputType="textEmailAddress"
+            app:met_floatingLabel="normal" />
+
         <com.rengwuxian.materialedittext.MaterialEditText
             android:id="@+id/password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:hint="Password"
-            app:met_floatingLabel="normal"
-            android:inputType="textPassword"/>
+            android:inputType="textPassword"
+            app:met_floatingLabel="normal" />
+
         <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:id="@+id/btn_register"
-            android:text="register"
-            android:background="#5D1D95"
-            android:layout_marginTop="10dp"
-            android:textColor="#FFFFFF">
+            android:layout_width="240dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="40sp"
+            android:layout_marginTop="20sp"
+            android:layout_marginRight="40sp"
+            android:backgroundTint="#B3DEA200"
+            android:fontFamily="casual"
+            android:hint="Confirm"
+            android:textAlignment="center"
+            android:textColorHint="#020202"
+            android:textSize="18sp">
 
         </Button>
 

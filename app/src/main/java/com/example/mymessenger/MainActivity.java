@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("");
 
-        
+
         profile_image=findViewById(R.id.profile_image);
         username=findViewById(R.id.username);
 
@@ -49,13 +49,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-               User user=snapshot.getValue(User.class);
-               username.setText(user.getUsername());
-               if(user.getImageURL().equals("default")){
-                   profile_image.setImageResource(R.mipmap.ic_launcher);
-               }else {
-                   Glide.with(MainActivity.this).load(user.getImageURL()).into(profile_image);
-               }
+                User user=snapshot.getValue(User.class);
+                username.setText(user.getUsername());
+                if(user.getImageURL().equals("default")){
+                    profile_image.setImageResource(R.mipmap.ic_launcher);
+                }else {
+                    Glide.with(MainActivity.this).load(user.getImageURL()).into(profile_image);
+                }
             }
 
             @Override
