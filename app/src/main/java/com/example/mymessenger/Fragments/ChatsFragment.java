@@ -24,7 +24,9 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.SplittableRandom;
 
 
@@ -45,11 +47,11 @@ public class ChatsFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_chats, container, false);
 
-        recyclerView=view.findViewById(R.id.recycler_view);
+        recyclerView = view.findViewById(R.id.recycler_view);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        fuser= FirebaseAuth.getInstance().getCurrentUser();
+        fuser = FirebaseAuth.getInstance().getCurrentUser();
 
         usersList = new ArrayList<>();
 
@@ -59,17 +61,21 @@ public class ChatsFragment extends Fragment {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 usersList.clear();
 
-                for(DataSnapshot snapshot1: snapshot.getChildren()){
-                    Chat chat=snapshot1.getValue(Chat.class);
+                for (DataSnapshot snapshot1 : snapshot.getChildren()) {
+                    Chat chat = snapshot1.getValue(Chat.class);
+                    assert chat !=null;
 
-                    if(chat.getSender().equals(fuser.getUid())){
+                    if (chat.getSender().equals(fuser.getUid())) {
                         usersList.add(chat.getReceiver());
                     }
-                    if(chat.getReceiver().equals(fuser.getUid())){
+                    if (chat.getReceiver().equals(fuser.getUid())) {
                         usersList.add(chat.getSender());
                     }
 
                 }
+                Set<String> hashSet = new HashSet<String>(usersList);
+                usersList.clear();
+                usersList.addAll(hashSet);
                 readChats();
             }
 
@@ -82,40 +88,47 @@ public class ChatsFragment extends Fragment {
         return view;
     }
 
-    private void readChats(){
+    private void readChats() {
+
         mUsers=new ArrayList<>();
 
-        reference=FirebaseDatabase.getInstance().getReference("Users");
+        reference= FirebaseDatabase.getInstance().getReference("Users");
 
         reference.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                mUsers.clear();
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-                for (DataSnapshot snapshot1: snapshot.getChildren()){
-                    User user=snapshot1.getValue(User.class);
+                //mUsers.clear();
+
+                for(DataSnapshot snapshot:dataSnapshot.getChildren()){
+
+                    User user=snapshot.getValue(User.class);
+
                     for(String id:usersList){
-                        if(user.getId().equals(id)){
-                            if(mUsers.size()!=0){
-                                for(User user1:mUsers){
-                                    if(!user.getId().equals(user1.getId())){
-                                        mUsers.add(user);
-                                    }
-                                }
-                            }else{
-                                mUsers.add(user);
-                            }
+
+                        assert user != null;
+                        if (user.getId().equals(id)) {
+
+                            mUsers.add(user);
+
                         }
+
                     }
+
                 }
+
                 userAdapter=new UserAdapter(getContext(),mUsers);
                 recyclerView.setAdapter(userAdapter);
+
+
             }
 
             @Override
-            public void onCancelled(@NonNull DatabaseError error) {
+            public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
         });
+
+
     }
 }
