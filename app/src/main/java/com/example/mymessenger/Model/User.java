@@ -1,4 +1,4 @@
-package com.example.mymessenger;
+package com.example.mymessenger.Model;
 
 public class User {
     private  String id;
