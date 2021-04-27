@@ -10,14 +10,14 @@
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
+        android:background="#DEDEA200"
         >
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#E8C204"
+            android:background="#FFEB3B"
             >
 
             <de.hdodenhof.circleimageview.CircleImageView
@@ -36,8 +36,8 @@
             android:id="@+id/tab_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/purple_500"
-            app:tabTextColor="#FFFFFF"/>
+            android:background="@color/white"
+            app:tabTextColor="#B3DEA200"/>
     </com.google.android.material.appbar.AppBarLayout>
 
 
