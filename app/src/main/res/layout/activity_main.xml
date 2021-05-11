@@ -10,14 +10,15 @@
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#DEDEA200"
+        android:background="@color/back"
+        android:fontFamily="casual"
         >
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#FFEB3B"
+
             >
 
             <de.hdodenhof.circleimageview.CircleImageView
@@ -30,14 +31,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="25dp"
-                android:text="username" />
+                android:text="username"
+                android:fontFamily="casual"
+                />
         </androidx.appcompat.widget.Toolbar>
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tab_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/white"
-            app:tabTextColor="#B3DEA200"/>
+            app:tabTextColor="@color/back"/>
     </com.google.android.material.appbar.AppBarLayout>
 
 
