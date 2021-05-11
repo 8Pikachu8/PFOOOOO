@@ -55,7 +55,19 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
 
         holder.show_message.setText(chat.getMessage());
 
-
+        if(position==mChat.size()-1)
+        {
+            if(chat.isIsseen())
+            {
+                holder.txt_seen.setText("Seen");
+            }
+            else{
+                holder.txt_seen.setText("Delivered");
+            }
+        }
+        else{
+            holder.txt_seen.setVisibility(View.GONE);
+        }
     }
 
     @Override
@@ -66,11 +78,12 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
     public static class ViewHolder extends RecyclerView.ViewHolder {
         public TextView show_message;
 
-
+        public TextView txt_seen;
         public ViewHolder(View itemView) {
             super(itemView);
 
             show_message = itemView.findViewById(R.id.show_message);
+            txt_seen = itemView.findViewById(R.id.txt_seen);
 
         }
 
