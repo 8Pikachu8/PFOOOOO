@@ -3,11 +3,16 @@ package com.example.mymessenger;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.ComponentCallbacks;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.Toast;
 import android.widget.Toolbar;
 
@@ -29,6 +34,7 @@ MaterialEditText username,password,email;
 Button btn_register;
 FirebaseAuth auth;
 DatabaseReference reference;
+CheckBox showpassword;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,12 +44,28 @@ DatabaseReference reference;
         getSupportActionBar().setTitle("Register");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        showpassword=findViewById(R.id.checkBox);
         username=findViewById(R.id.username);
         password=findViewById(R.id.password);
         email=findViewById(R.id.email);
         btn_register=findViewById(R.id.btn_register);
 
         auth=FirebaseAuth.getInstance();
+
+        showpassword.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+
+                                            @Override
+                                            public void onCheckedChanged(CompoundButton buttonView, boolean b) {
+                                                if (b) {
+                                                    password.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                                                } else {
+
+                                                    password.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                                                }
+                                            }
+                                        }
+
+        );
 
         btn_register.setOnClickListener(new View.OnClickListener() {
             @Override

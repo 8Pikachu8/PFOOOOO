@@ -20,16 +20,16 @@
         <ImageView
             android:id="@+id/imageView2"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="182dp"
             app:srcCompat="@drawable/tel" />
 
 
         <TextView
             android:id="@+id/textView"
             android:layout_width="wrap_content"
-            android:layout_height="44dp"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="30dp"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="25dp"
             android:layout_marginRight="30dp"
             android:fontFamily="casual"
             android:text="Registration"
@@ -40,7 +40,7 @@
         <com.rengwuxian.materialedittext.MaterialEditText
             android:id="@+id/username"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:layout_marginTop="10dp"
             android:hint="UserName"
             app:met_floatingLabel="normal" />
@@ -68,7 +68,7 @@
             android:layout_width="240dp"
             android:layout_height="50dp"
             android:layout_marginLeft="40sp"
-            android:layout_marginTop="20sp"
+            android:layout_marginTop="10sp"
             android:layout_marginRight="40sp"
             android:backgroundTint="#B3DEA200"
             android:fontFamily="casual"
@@ -78,6 +78,12 @@
             android:textSize="18sp">
 
         </Button>
+
+        <CheckBox
+            android:id="@+id/checkBox"
+            android:layout_width="132dp"
+            android:layout_height="wrap_content"
+            android:text="Show Password" />
 
     </LinearLayout>
 

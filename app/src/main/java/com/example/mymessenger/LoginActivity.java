@@ -5,8 +5,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.Toolbar;
@@ -23,6 +27,7 @@ public class LoginActivity extends AppCompatActivity {
     Button btn_login;
     FirebaseAuth auth;
     TextView forgot_password;
+    CheckBox showpasswordl;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,6 +44,22 @@ public class LoginActivity extends AppCompatActivity {
         password=findViewById(R.id.password);
         btn_login=findViewById(R.id.btn_login);
         forgot_password=findViewById(R.id.forgot_password);
+        showpasswordl=findViewById(R.id.checkBox2);
+        showpasswordl.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+
+                                                    @Override
+                                                    public void onCheckedChanged(CompoundButton buttonView, boolean b) {
+                                                        if (b) {
+                                                            password.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                                                        } else {
+
+                                                            password.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                                                        }
+                                                    }
+                                                }
+
+        );
+
         forgot_password.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
